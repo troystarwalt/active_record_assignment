@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html>
     <head>
+    <script type="text/javascript">
+    </script>
     </head>
 
     <body>
         <p>length? <%= params[:users].length %></p>
 
         <% params[:users].each do |u| %>
-            <%= u.name %>
+           Name: <%= u.fname %>
         <% end %>
+
+        <% params[:users].each do |uu| %>
+        <p><span style="color:rgb(<%=rand(255)%>,<%=rand(255)%>,<%=rand(255)%>);">
+        <%= uu.email %>
+        </span>
+        </p>
+		<% end %>
     </body>
 </html>
