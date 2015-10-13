@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <script type="text/javascript">
-    </script>
     </head>
 
     <body>
         <p>length? <%= params[:users].length %></p>
 
         <% params[:users].each do |u| %>
-           Name: <%= u.fname %>
+           Name: <%= u.fname %>, <%= u.id %>
         <% end %>
 
         <% params[:users].each do |uu| %>
@@ -18,5 +16,29 @@
         </span>
         </p>
 		<% end %>
+        <div id="signup">
+            <form action="/signup" id="usrform" method="post" name="usrform">
+                <label for="first_name">
+                    First Name
+                </label><br>
+                <input type="text" name="fname" id="first_name" placeholder="First Name"><br>
+                <label for="last_name">
+                    Last Name
+                </label><br>
+                <input type="text" name="lname" id="last_name" placeholder="Last Name"><br>
+                <label for="user_email">
+                    Email
+                </label><br>
+                <input type="email" name="uemail" id="user_email" placeholder="Email"><br>
+                <button id="add_user" type="submit">Add Yo Self</button>
+            </form>
+        </div>
+        <div id="flash.alert">
+<%= flash[:notice] = "Hello #{params[:fname]}You wesre feeling pressy at #{Time.now}." %>
+<%= "Feeling blah again? That's too bad. #{flash[:notice]}" %>
+
+<!-- Why isn't params working here? -->
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     </body>
 </html>
